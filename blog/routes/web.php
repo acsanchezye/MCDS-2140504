@@ -28,7 +28,7 @@ Route::get('users', function () {
      (App\User::all());
 });
 
-Route::get('consulta', function () {
+/*Route::get('consulta', function () {
     $users = App\User::all()->take(10);
     foreach ($users as $user)
     {
@@ -38,4 +38,18 @@ Route::get('consulta', function () {
         $tiemporegistro = $tiempocreacion->diffForHumans();
         echo ($user->fullname.' con '.$edad.' años de edad,'.' este usuario fue creado '.$tiemporegistro);   
          }
+});*/
+
+Route::get('challenge', function () {
+foreach (App\User::all()->take(10) as $user) {
+$years = Carbon::createFromDate($user->birthdate)->diff()->format('%y years old');
+$since = Carbon::parse($user->created_at);
+$rs[] = $user->fullname." - ".$years." - created ".$since->diffForHumans();
+}
+  return view('challenge', ['rs' => $rs]);
 });
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
