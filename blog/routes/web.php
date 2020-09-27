@@ -49,6 +49,10 @@ $rs[] = $user->fullname." - ".$years." - created ".$since->diffForHumans();
   return view('challenge', ['rs' => $rs]);
 });
 
+Route::get('examples', function () {
+    return view('examples');
+});
+
 
 Auth::routes();
 
