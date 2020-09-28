@@ -49,10 +49,15 @@ $rs[] = $user->fullname." - ".$years." - created ".$since->diffForHumans();
   return view('challenge', ['rs' => $rs]);
 });
 
-Route::get('examples', function () {
-    return view('examples');
+Route::get('example', function () {
+  $games      = App\Game::all()->take(2);
+  $categories = App\Category::all()->take(3);
+  $users      = App\User::all()->take(10);
+  return view('example')
+              ->with('games', $games)
+              ->with('categories', $categories)
+              ->with('users', $users);
 });
-
 
 Auth::routes();
 
