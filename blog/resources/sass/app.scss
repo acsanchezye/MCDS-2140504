@@ -1,4 +1,4 @@
-//Fonts
+// Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
 // Variables
@@ -7,11 +7,5 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-
-body{	
-	background-color: $yellow;
-	.card-header {
-		background-color: $blue;
-	}
-
-}
+// Custom
+@import 'custom';
