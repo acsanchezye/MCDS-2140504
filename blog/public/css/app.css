@@ -10938,16 +10938,3 @@ h1 {
   color: #133b5c;
 }
 
-ul.pagination {
-  justify-content: center;
-}
-
-ul.pagination .page-item.active .page-link {
-  background-color: #1e5f74;
-  border-color: #133b5c;
-  color: rgba(255, 255, 255, 0.8);
-}
-
-ul.pagination .page-item .page-link {
-  color: #1e5f74;
-}

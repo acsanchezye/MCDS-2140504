@@ -20,7 +20,7 @@ class UserController extends Controller
     public function index()
     {
         //$users = User::all();
-        $users = User::paginate(10);
+        $users = User::paginate(20);
         return view('users.index')->with('users', $users);
     }
 
