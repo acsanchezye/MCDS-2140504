@@ -37,7 +37,19 @@
         @yield('content')
     </main>
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/sweetalert2@9.js') }}"></script>
-</body>
+
+    <script>
+        $(document).ready(function() {
+            @if (session('message'))
+                Swal.fire(
+                    'Felicitaciones',
+                    '{{ session('message') }}',
+                    'success'
+                );
+            @endif
+        });
+    </script>
+   </body>
 </html>
