@@ -70,7 +70,7 @@
                 @else
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        <img src="{{ asset(Auth::user()->photo) }}" class="img-thumbnail rounded-circle" width="40px">
+                            <img src="{{ asset(Auth::user()->photo) }}" class="img-thumbnail rounded-circle" width="40px">
                             {{ Auth::user()->fullname }}
                         </a>
 
@@ -79,6 +79,13 @@
                                 <i class="fa fa-users"></i>
                                  Módulo Usuarios 
                             </a>
+
+                             <a class="dropdown-item" href="{{ url('categories') }}">
+                                <i class="fas fa-list-alt"></i>
+                                 Módulo Categorías 
+                            </a>
+
+                            
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();

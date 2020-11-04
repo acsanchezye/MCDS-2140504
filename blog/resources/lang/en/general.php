@@ -29,4 +29,6 @@ return [
     'link-close'     => 'Logout',
     // Dashboard
     'title-dashboard' => 'Dashboard',
+    'label-name'        =>'Name',
+    'label-description' =>'Description',
 ];

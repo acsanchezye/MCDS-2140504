@@ -29,4 +29,6 @@ return [
     'link-close'     => 'Cerrar Sesión',
     // Dashboard
     'title-dashboard' => 'Escritorio',
+    'label-name'        =>'Nombre Categoria',
+    'label-description' =>'Descripcion Categoria',
 ];
