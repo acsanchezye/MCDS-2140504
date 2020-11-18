@@ -20,24 +20,36 @@ class UserRequest extends FormRequest
      * @return array
      */
     public function rules()
-     {
+    {
         return [
              'name'            => 'required',
-             'description'     => 'required|description|unique:categories',
              'image'           => 'required|image|max:1000',
+             'description'     => 'required',
         ];
     }
 
+
     public function messages() {
-        return [
-            'name.required' => 'El campo ":attribute" es obligatorio.',
-            'description.required'    => 'El campo "Correo Electrónico" es obligatorio.'
+
+
+        return[
+            'name.required'         => 'El campo :attribute es obligatorio.',
+            'image.required'        => 'El campo :attribute es obligatorio.',
+            'description.required'  => 'El campo :attribute es obligatorio.'
+  
+
+
         ];
     }
 
     public function attributes() {
-        return [
-            'name' => 'Nombre Completo'
-        ];
-    }
 
+        return [
+
+            'name'         => 'Nombre Categoria',
+            'image'        => 'Imagen',
+            'description'  => 'Descripcion'
+        ];
+
+    }
+}
