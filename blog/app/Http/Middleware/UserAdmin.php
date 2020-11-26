@@ -3,9 +3,9 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use App;
+use Auth;
 
-class Locale
+class UserAdmin
 {
     /**
      * Handle an incoming request.
@@ -16,9 +16,9 @@ class Locale
      */
     public function handle($request, Closure $next)
     {
-        if (session()->has('locale')) {
-            App::setLocale(session()->get('locale'));
+        if (Auth::user() && Auth::user()->role == 'Admin') {
+            return $next($request);
         }
-        return $next($request);
+        return redirect('home')->with('error', 'No tiene permisos para ver el contenido!');
     }
 }

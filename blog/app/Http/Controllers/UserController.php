@@ -6,6 +6,9 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 
+use App\Exports\UserExport;
+use App\Imports\UserImport;
+
 class UserController extends Controller
 {
     public function __construct() 
@@ -60,7 +63,6 @@ class UserController extends Controller
         if($user->save()) {
             return redirect('users')->with('message', 'El Usuario: '.$user->fullname.' fue Adicionado con Exito!');
         } 
-
     }
 
     /**
@@ -121,15 +123,30 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        
         if($user->delete()) {
             return redirect('users')->with('message', 'El Usuario: '.$user->fullname.' fue Eliminado con Exito!');
         } 
-     }
+    }
 
-     public function pdf(){
+    public function pdf() {
         $users = User::all();
         $pdf = \PDF::loadView('users.pdf', compact('users'));
         return $pdf->download('allusers.pdf');
     }
+
+    public function excel() {
+        return \Excel::download(new UserExport, 'allusers.xlsx');
+    }
+
+    public function import(Request $request) {
+        $file = $request->file('file');
+        \Excel::import(new UserImport, $file);
+        return redirect()->back()->with('message', 'Usuarios importados con exito!');
+    }
+
+    public function search(Request $request) {
+        $users = User::names($request->q)->orderBy('id','ASC')->paginate(20);
+        return view('users.search')->with('users', $users);
+    }
+
 }

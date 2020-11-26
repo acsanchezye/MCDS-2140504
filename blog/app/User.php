@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'fullname',
+        'fullname', 
         'email',
         'phone',
         'birthdate',
@@ -27,6 +27,7 @@ class User extends Authenticatable
         'role',
         'active'
     ];
+
 
     /**
      * The attributes that should be hidden for arrays.
@@ -46,13 +47,21 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function games()
-    {
+    public function games() {
         return $this->hasMany('App\Game');
-
-
     }
+
+    public function scopeNames($users, $q) {
+        if (trim($q)) {
+            $users->where('fullname','LIKE',"%$q%")
+                  ->orWhere('email','LIKE',"%$q%");
+        }
+    }
+
+
 }
+
+
 
 
 

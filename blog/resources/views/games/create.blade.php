@@ -3,13 +3,13 @@
 @section('title', 'Crear Juego')
 
 @section('content')
-	<div class="row">
-		<div class="col-md-6 offset-md-3">
-			<h1>
-				<i class="fa fa-plus"></i> 
-				Adicionar Juego
-			</h1>
-			<hr>
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h1>
+                <i class="fa fa-plus"></i> 
+                Adicionar Juego
+            </h1>
+            <hr>
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item">
@@ -31,7 +31,7 @@
               </ol>
             </nav>
 
-			<form method="POST" action="{{ route('games.store') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('games.store') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="Nombre" autofocus>
@@ -60,8 +60,8 @@
                                 <div class="custom-file">
                                    <input type="file" class="custom-file-input @error('image') is-invalid @enderror" id="photo" name="image" accept="image/*">
                                    <label class="custom-file-label" for="customFile"> 
-                                   	 <i class="fa fa-upload"></i> 
-                                   	 Imagen
+                                     <i class="fa fa-upload"></i> 
+                                     Imagen
                                    </label>
                                 @error('image')
                                     <span class="invalid-feedback" role="alert">
@@ -103,7 +103,7 @@
 
                         <div class="form-group">
                                 <select name="slider" class="form-control @error('slider') is-invalid @enderror">
-                                    <option value="">Seleccione Presentación...</option>
+                                    <option value="">Seleccione Destacado...</option>
                                     <option value="1" @if (old('slider') == 1) selected @endif>Si</option>
                                     <option value="2" @if (old('slider') == 2) selected @endif>No</option>
                                 </select>
@@ -132,6 +132,6 @@
                                 </button>
                         </div>
                     </form>
-		</div>
-	</div>
+        </div>
+    </div>
 @endsection
