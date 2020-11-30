@@ -85,6 +85,16 @@ Route::post('import/excel/users', 'UserController@import');
 // Search Scope
 Route::post('users/search', 'UserController@search');
 
+
+// Export PDF Games
+Route::get('generate/pdf/games', 'GameController@pdf');
+// Export Excel Games
+Route::get('generate/excel/games', 'GameController@excel');
+// Import Excel Games
+Route::post('import/excel/games', 'GameController@import');
+// Search Scope Games
+Route::post('games/search', 'GameController@search');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 // Middleware
